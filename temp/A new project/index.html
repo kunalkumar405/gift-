@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="A special interactive surprise for Ananya.">
+    <title>Happy Valentine's Day, Ananya</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@500;700&family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Poppins:wght@300;400;500;600&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <audio id="sound-camera" src="https://assets.mixkit.co/active_storage/sfx/2568/2568-preview.mp3"
+        preload="auto"></audio>
+    <audio id="sound-pop" src="https://assets.mixkit.co/active_storage/sfx/2354/2354-preview.mp3"
+        preload="auto"></audio>
+    <audio id="sound-paper" src="https://assets.mixkit.co/active_storage/sfx/2354/2354-preview.mp3"
+        preload="auto"></audio>
+
+    <div id="hearts-bg" aria-hidden="true"></div>
+
+    <main>
+        <section id="hero">
+            <div class="hero-bg"></div>
+            <div class="hero-content">
+                <h1 class="hero-title">Happy Birthday</h1>
+                <h1 class="hero-name">Ananya</h1>
+                <p class="hero-subtitle">Every moment with you is a beautiful dream come true.</p>
+                <button class="btn-primary" onclick="scrollToSection('envelope-section', event)">
+                    Shower Me With Love <i class="fa-solid fa-heart"></i>
+                </button>
+            </div>
+        </section>
+
+        <section id="envelope-section">
+            <h2 class="reveal">A Special Letter For You</h2>
+            <div class="envelope-wrapper reveal" id="envelope">
+                <div class="envelope">
+                    <div class="env-front"></div>
+                    <div class="env-letter">
+                        <p>Open me...</p>
+                    </div>
+                    <div class="env-flap"></div>
+                    <i class="fa-solid fa-heart heart-seal"></i>
+                </div>
+            </div>
+            <p class="env-instructions reveal">Tap to open</p>
+        </section>
+
+        <section id="love-notes-section">
+            <div class="notebook-page reveal">
+                <div class="romantic-letter">
+                    <p class="letter-line fade-1">My Dearest Ananya,</p>
+                    <p class="letter-line fade-2">From the moment you came into my life, everything changed.</p>
+                    <p class="letter-line fade-3">You brought happiness, warmth, and meaning to every day.</p>
+                    <p class="letter-line fade-4">Your smile brightens my darkest moments, and your laugh is my favorite
+                        sound in the world.</p>
+                    <p class="letter-line fade-5">You are not just my love…</p>
+                    <p class="letter-line fade-6">you are my peace, my happiness, and my forever.</p>
+                    <p class="letter-line fade-7 signature">Forever yours ❤️</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="gallery">
+            <h2 class="reveal">Your Childhood Memories</h2>
+            <div class="gallery-grid reveal">
+                <div class="polaroid-flip" onclick="flipCard(this)">
+                    <div class="polaroid-inner">
+                        <div class="polaroid-front">
+                            <img src="images/ananya.gift.png" alt="Memory" loading="lazy">
+                            <p>Motki</p>
+                        </div>
+                        <div class="polaroid-back">
+                            "That day will always stay in my heart forever. You looked so beautiful. ❤️"
+                        </div>
+                    </div>
+                </div>
+                <div class="polaroid-flip" onclick="flipCard(this)">
+                    <div class="polaroid-inner">
+                        <div class="polaroid-front">
+                            <img src="images/ananya.gift1.png" alt="Memory" loading="lazy">
+                            <p>Maggie</p>
+                        </div>
+                        <div class="polaroid-back">
+                            "Walking hand in hand as the sun went down... perfect. 🌅"
+                        </div>
+                    </div>
+                </div>
+                <div class="polaroid-flip" onclick="flipCard(this)">
+                    <div class="polaroid-inner">
+                        <div class="polaroid-front">
+                            <img src="images/ananya.gift2.png" alt="Memory" loading="lazy">
+                            <p>Kaju</p>
+                        </div>
+                        <div class="polaroid-back">
+                            "Your laugh is my absolute favorite sound in the world. 😊"
+                        </div>
+                    </div>
+                </div>
+                <div class="polaroid-flip" onclick="flipCard(this)">
+                    <div class="polaroid-inner">
+                        <div class="polaroid-front">
+                            <img src="images/ananya.gift4.png" alt="Memory" loading="lazy">
+                            <p>Paddu</p>
+                        </div>
+                        <div class="polaroid-back">
+                            "No matter where we are, as long as I'm with you, I'm home. 🏡"
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="reasons">
+            <h2 class="reveal">100 Reasons Why I Love You</h2>
+            <div class="glass-card reason-card reveal" id="reason-card-container">
+                <p id="reason-text">Click the button to reveal my heart...</p>
+            </div>
+            <button class="btn-primary reveal" onclick="generateReason(event)">
+                <i class="fa-solid fa-wand-magic-sparkles"></i> Show Another Reason
+            </button>
+        </section>
+
+        <section id="open-when">
+            <h2 class="reveal">Open When...</h2>
+            <div class="cards-grid reveal">
+                <div class="airmail-card" onclick="openWhenCard(this)">
+                    <div class="airmail-inner">
+                        <div class="airmail-front">
+                            <div class="airmail-label">To: Ananya</div>
+                            <svg viewBox="0 0 24 24" width="60" height="60" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round" class="card-svg"><path d="M20 16.2A4.5 4.5 0 0 0 17.5 8h-1.8A7 7 0 1 0 4 14.9"></path><path d="M16 14v6"></path><path d="M8 14v6"></path><path d="M12 16v6"></path></svg>
+                            <h3>You are sad</h3>
+                        </div>
+                        <div class="airmail-back airmail-letter">
+                            "Close your eyes and remember how tightly I hold you. You are never alone."
+                        </div>
+                    </div>
+                </div>
+
+                <div class="airmail-card" onclick="openWhenCard(this)">
+                    <div class="airmail-inner">
+                        <div class="airmail-front">
+                            <div class="airmail-label">To: Ananya</div>
+                            <svg viewBox="0 0 24 24" width="60" height="60" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round" class="card-svg"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
+                            <h3>You miss me</h3>
+                        </div>
+                        <div class="airmail-back airmail-letter">
+                            "Look up at the moon. We are sharing the exact same view right now."
+                        </div>
+                    </div>
+                </div>
+
+                <div class="airmail-card" onclick="openWhenCard(this)">
+                    <div class="airmail-inner">
+                        <div class="airmail-front">
+                            <div class="airmail-label">To: Ananya</div>
+                            <svg viewBox="0 0 24 24" width="60" height="60" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round" class="card-svg"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+                            <h3>You can't sleep</h3>
+                        </div>
+                        <div class="airmail-back airmail-letter">
+                            "Imagine me playing with your hair and whispering I love you. Relax your mind."
+                        </div>
+                    </div>
+                </div>
+
+                <div class="airmail-card" onclick="openWhenCard(this)">
+                    <div class="airmail-inner">
+                        <div class="airmail-front">
+                            <div class="airmail-label">To: Ananya</div>
+                            <svg viewBox="0 0 24 24" width="60" height="60" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round" class="card-svg"><path d="M12 3v3m0 12v3M3 12h3m12 0h3M4.9 4.9l2.1 2.1m10 10l2.1 2.1M4.9 19.1l2.1-2.1m10-10l2.1-2.1"></path><circle cx="12" cy="12" r="4"></circle></svg>
+                            <h3>You are happy</h3>
+                        </div>
+                        <div class="airmail-back airmail-letter">
+                            "I am so incredibly proud of you! Let's celebrate your beautiful smile!"
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="love-booth">
+            <h2 class="reveal">Love Booth 📸</h2>
+            <div class="glass-card booth-container reveal">
+                <div class="camera-box" id="camera-box">
+                    <div id="camera-flash"></div>
+                    <video id="video-preview" autoplay muted></video>
+                    <canvas id="canvas-output"></canvas>
+                    <p id="camera-placeholder">Camera inactive.<br>Click Start or Upload.</p>
+                    <div id="booth-floating-hearts"></div>
+                </div>
+
+                <div class="booth-controls">
+                    <label for="frame-select">Choose a photo frame:</label>
+                    <select id="frame-select" class="frame-selector" onchange="applyFrameIfCanvasActive()">
+                        <option value="none">No Frame</option>
+                        <option value="valentine" selected>Valentine Special</option>
+                        <option value="polaroid-love">Polaroid Love</option>
+                        <option value="heart-frame">Heart Frame</option>
+                        <option value="cute">Cute Frame</option>
+                        <option value="frame">Romantic Frame</option>
+                        <option value="frame1">Cute Frame</option>
+                        <option value="frame2">Insta Frame</option>
+                    </select>
+                </div>
+
+                <div class="booth-controls">
+                    <button class="booth-btn" onclick="startCamera()"><i class="fa-solid fa-video"></i> Start</button>
+                    <button class="booth-btn capture-btn" onclick="takePhoto()"><i class="fa-solid fa-camera"></i>
+                        Snap</button>
+                    <input type="file" id="upload-photo" accept="image/*" onchange="handleFileUpload(event)"
+                        title="Upload a photo">
+                    <button class="booth-btn" onclick="document.getElementById('upload-photo').click()"><i
+                            class="fa-solid fa-upload"></i> Upload</button>
+                    <button class="booth-btn save-btn" onclick="downloadPhoto()"><i class="fa-solid fa-download"></i>
+                        Save</button>
+                </div>
+            </div>
+        </section>
+
+        <section id="countdown-section">
+            <h2 class="reveal">Countdown to Your Birthday</h2>
+            <div class="countdown-container reveal">
+                <div id="countdown-display" class="countdown-text">Loading...</div>
+            </div>
+        </section>
+
+        <section id="future-plans">
+            <h2 class="reveal">Our Future Plans</h2>
+            <div class="timeline reveal">
+                <div class="timeline-line"></div>
+                <div class="glass-card timeline-item">
+                    <div class="timeline-icon"><i class="fa-solid fa-cloud-sun"></i></div>
+                    <div class="timeline-content">
+                        <h3>Watching sunset together</h3>
+                        <p>Finding the perfect spot just to hold you as the day ends.</p>
+                    </div>
+                </div>
+                <div class="glass-card timeline-item">
+                    <div class="timeline-icon"><i class="fa-solid fa-moon"></i></div>
+                    <div class="timeline-content">
+                        <h3>Late night talks</h3>
+                        <p>Sharing our deepest thoughts under the stars.</p>
+                    </div>
+                </div>
+                <div class="glass-card timeline-item">
+                    <div class="timeline-icon"><i class="fa-solid fa-car"></i></div>
+                    <div class="timeline-content">
+                        <h3>Long road trips</h3>
+                        <p>Singing our favorite songs with the windows down.</p>
+                    </div>
+                </div>
+                <div class="glass-card timeline-item">
+                    <div class="timeline-icon"><i class="fa-solid fa-utensils"></i></div>
+                    <div class="timeline-content">
+                        <h3>Cooking together</h3>
+                        <p>Making a beautiful mess in the kitchen with you.</p>
+                    </div>
+                </div>
+                <div class="glass-card timeline-item">
+                    <div class="timeline-icon"><i class="fa-solid fa-cake-candles"></i></div>
+                    <div class="timeline-content">
+                        <h3>Celebrating birthdays</h3>
+                        <p>Making every single year more special than the last.</p>
+                    </div>
+                </div>
+                <div class="glass-card timeline-item">
+                    <div class="timeline-icon"><i class="fa-solid fa-house-chimney"></i></div>
+                    <div class="timeline-content">
+                        <h3>Building our dream life</h3>
+                        <p>Growing old and happy by each other's side.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="proposal" class="clean-section">
+            <div id="proposal-state">
+                <h2 class="script-heading">Will you be my Valentine? <span class="emoji">🌹</span></h2>
+
+                <div class="gif-card" id="question-gif-card">
+                    <div class="tenor-gif-embed" data-postid="2540091918952573833" data-share-method="host"
+                        data-aspect-ratio="0.75" data-width="100%">
+                    </div>
+                </div>
+
+                <div class="proposal-buttons">
+                    <button class="btn-no" id="btn-no">No 🥺</button>
+                    <button class="btn-yes" id="btn-yes" onclick="acceptProposal(event)">Yes! 💖</button>
+                </div>
+            </div>
+
+            <div id="success-state" class="hidden-element">
+                <h2 class="script-heading accent-pink">✨ Yayyyyyy! ✨</h2>
+                <p class="success-subtext">"I knew you'd say yes! I love you! 💖"</p>
+                <div class="gif-card success-card">
+                    <div class="tenor-gif-embed" data-postid="4664697448299202949" data-share-method="host"
+                        data-aspect-ratio="1" data-width="100%">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="final-surprise" class="clean-section">
+            <h2 class="script-heading dark">One Last Surprise...</h2>
+            <p class="click-instruction">Click the box to open</p>
+
+            <div class="minimal-gift-container" onclick="openGift()">
+                <div class="minimal-gift-box" id="minimal-gift">
+                    <div class="minimal-gift-lid"></div>
+                    <div class="minimal-gift-body"></div>
+                </div>
+            </div>
+
+            <div class="surprise-message" id="surpriseMessage">
+                <h3>Will you marry me, Ananya? ❤️</h3>
+                <p>This little website is just a small way to show how special you are.</p>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="site-footer">
+        <p>Made with all my heart.</p>
+        <p class="tiny-heart">♡</p>
+    </footer>
+
+    <div class="pill-music-player" id="music-toggle" onclick="toggleMusic()">
+        <div class="play-circle">
+            <i class="fa-solid fa-play" id="music-icon"></i>
+        </div>
+        <div class="track-info">
+            <span class="track-title">Love Song</span>
+            <span class="track-sub">Playing for you</span>
+        </div>
+        <div class="volume-icon">
+            <i class="fa-solid fa-volume-xmark" id="volume-icon"></i>
+        </div>
+    </div>
+
+    <audio id="bg-music" loop>
+        <source src="music/gift.mp3" type="audio/mpeg">
+    </audio>
+
+    <canvas id="confetti-canvas" aria-hidden="true"></canvas>
+
+    <script src="https://tenor.com/embed.js"></script>
+    <script src="script.js"></script>
+</body>
+
+</html>
